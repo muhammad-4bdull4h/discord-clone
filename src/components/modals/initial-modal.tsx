@@ -6,8 +6,8 @@ import {
   DialogHeader,
   DialogFooter,
   DialogDescription,
+  DialogTitle
 } from "@/components/ui/dialog";
-import { DialogTitle } from "@radix-ui/react-dialog";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -24,6 +24,7 @@ import { Button } from "../ui/button";
 import FileUpload from "../FileUpload";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import "@/app/globals.css";
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "server name is required" }),
