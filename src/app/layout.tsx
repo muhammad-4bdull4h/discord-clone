@@ -6,6 +6,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import ModelProvider from "@/components/ModelProvider";
+import { SocketProvider } from "@/components/SocketProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -34,10 +35,10 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html lang="en" className="h-full">
         <body
           className={cn(
-            `${openSans.className} antialiased bg-white dark:bg-[#313338]`
+            `${openSans.className} antialiased bg-white h-full dark:bg-[#313338]`
           )}
         >
           <ThemeProvider
@@ -46,8 +47,10 @@ export default function RootLayout({
             enableSystem={false}
             storageKey="discord-theme"
           >
-            <ModelProvider />
-            {children}
+            <SocketProvider>
+              <ModelProvider />
+              {children}
+            </SocketProvider>
           </ThemeProvider>
         </body>
       </html>
