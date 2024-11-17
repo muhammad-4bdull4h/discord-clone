@@ -9,6 +9,7 @@ import LeaveServerModal from "./modals/leave-server";
 import DeleteServerModal from "./modals/delete-server";
 import DeleteChannelModal from "./modals/delete-channel";
 import EditChannelModal from "./modals/edit-channel";
+import MessageFileModal from "./modals/message-file-model";
 
 function ModelProvider() {
   return (
@@ -20,8 +21,9 @@ function ModelProvider() {
       <CreateChannelModal />
       <LeaveServerModal />
       <DeleteServerModal />
-      <DeleteChannelModal/>
-      <EditChannelModal/>
+      <DeleteChannelModal />
+      <EditChannelModal />
+      <MessageFileModal />
     </>
   );
 }

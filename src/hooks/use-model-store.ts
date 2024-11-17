@@ -2,11 +2,23 @@ import { Channel, ChannelType, Server } from "@prisma/client";
 import { set } from "react-hook-form";
 import { create } from "zustand";
 
-export type ModelType = "createServer" | "invite" | "editServer" | "members" | "createChannel" | "leaveServer" | "deleteServer" | "deleteChannel" | "editChannel";
+export type ModelType =
+  | "createServer"
+  | "invite"
+  | "editServer"
+  | "members"
+  | "createChannel"
+  | "leaveServer"
+  | "deleteServer"
+  | "deleteChannel"
+  | "editChannel"
+  | "messageFile";
 interface ModelData {
   server?: Server;
   channelType?: ChannelType;
-  channel?: Channel
+  channel?: Channel;
+  apiUrl?: string;
+  query?: Record<string, any>;
 }
 
 interface ModelStore {
