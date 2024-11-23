@@ -12,7 +12,8 @@ export type ModelType =
   | "deleteServer"
   | "deleteChannel"
   | "editChannel"
-  | "messageFile";
+  | "messageFile"
+  | "deleteMessage";
 interface ModelData {
   server?: Server;
   channelType?: ChannelType;

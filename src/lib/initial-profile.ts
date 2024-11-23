@@ -14,7 +14,19 @@ export const initialProfile = async () => {
     },
   });
   if (profile) {
-    return profile;
+    if (user.imageUrl !== profile.imageUrl) {
+      const updatedProfile = await db.profile.update({
+        where: {
+          userId: user.id,
+        },
+        data: {
+          imageUrl: user.imageUrl,
+        },
+      });
+      return updatedProfile;
+    } else {
+      return profile;
+    }
   }
   const newProfile = await db.profile.create({
     data: {

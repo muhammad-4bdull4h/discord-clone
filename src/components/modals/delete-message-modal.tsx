@@ -11,15 +11,13 @@ import {
 import { useModel } from "@/hooks/use-model-store";
 import { Button } from "../ui/button";
 import axios from "axios";
-import { useRouter } from "next/navigation";
 import qs from "query-string";
 
-function DeleteChannelModal() {
-  const { type, isOpen, onClose, onOpen, data } = useModel();
+function DeleteMessageModal() {
+  const { type, isOpen, onClose, data } = useModel();
 
-  const isModelOpen = isOpen && type === "deleteChannel";
-  const { server, channel } = data;
-  const router = useRouter();
+  const isModelOpen = isOpen && type === "deleteMessage";
+  const { apiUrl, query } = data;
 
   const [loading, setLoading] = useState(false);
 
@@ -27,16 +25,21 @@ function DeleteChannelModal() {
     try {
       setLoading(true);
       const url = qs.stringifyUrl({
-        url: `/api/channels/${channel?.id}`,
+        url: apiUrl || "",
         query: {
-          serverId: server?.id,
+          ...query,
+          action: "delete",
         },
       });
-      const res = await axios.delete(url);
+      const res = await axios.patch(
+        url,
+        {},
+        {
+          withCredentials: true,
+        }
+      );
 
       onClose();
-      router.refresh();
-      router.push(`/servers/${server?.id}`);
     } catch (error) {
       console.log(error);
     } finally {
@@ -50,14 +53,11 @@ function DeleteChannelModal() {
         <DialogContent className="bg-white text-black p-0 overflow-hidden">
           <DialogHeader className="pt-8 px-6">
             <DialogTitle className="text-2xl text-center font-bold">
-              Delete Channel
+              Delete Message
             </DialogTitle>
             <DialogDescription className="text-center text-zinc-500">
-              Are you sure you want to do this? <br />{" "}
-              <span className="font-semibold text-indigo-500">
-                #{channel?.name}
-              </span>{" "}
-              will be permanently deleted
+              Are you sure you want to do this? <br /> This message will be
+              permanently deleted.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter className="bg-gray-100 px-6 py-4">
@@ -76,4 +76,4 @@ function DeleteChannelModal() {
   );
 }
 
-export default DeleteChannelModal;
+export default DeleteMessageModal;
