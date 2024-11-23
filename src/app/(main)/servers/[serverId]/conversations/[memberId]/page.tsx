@@ -1,6 +1,7 @@
 import ChatHeader from "@/components/chat/ChatHeader";
 import ChatInput from "@/components/chat/ChatInput";
 import ChatMessages from "@/components/chat/ChatMessages";
+import { MediaRoom } from "@/components/MediaRoom";
 import { getOrCreateConversation } from "@/lib/conversation";
 import { currentProfile } from "@/lib/current-profile";
 import { db } from "@/lib/db";
@@ -13,9 +14,12 @@ interface MemberIdPageProps {
     memberId: string;
     serverId: string;
   };
+  searchParams: {
+    video?: boolean;
+  };
 }
 
-async function MemberIdPage({ params }: MemberIdPageProps) {
+async function MemberIdPage({ params, searchParams }: MemberIdPageProps) {
   const profile = await currentProfile();
 
   if (!profile) {
@@ -58,25 +62,32 @@ async function MemberIdPage({ params }: MemberIdPageProps) {
         serverId={params.serverId}
         type="conversations"
       />
-      <ChatMessages
-        member={currentMember}
-        name={otherMember.profile.name}
-        chatId={conversation.id}
-        type="conversation"
-        apiUrl="/api/direct-messages"
-        paramKey="conversationId"
-        paramValue={conversation.id}
-        socketUrl={`${process.env.SOCKET_SERVER_URL}/direct-messages`}
-        socketQuery={{
-          conversationId: conversation.id,
-        }}
-      />
-      <ChatInput
-        name={otherMember.profile.name}
-        type="conversation"
-        query={{ conversationId: conversation.id }}
-        apiUrl={`${process.env.SOCKET_SERVER_URL}/direct-messages`}
-      />
+      {!searchParams.video && (
+        <>
+          <ChatMessages
+            member={currentMember}
+            name={otherMember.profile.name}
+            chatId={conversation.id}
+            type="conversation"
+            apiUrl="/api/direct-messages"
+            paramKey="conversationId"
+            paramValue={conversation.id}
+            socketUrl={`${process.env.SOCKET_SERVER_URL}/direct-messages`}
+            socketQuery={{
+              conversationId: conversation.id,
+            }}
+          />
+          <ChatInput
+            name={otherMember.profile.name}
+            type="conversation"
+            query={{ conversationId: conversation.id }}
+            apiUrl={`${process.env.SOCKET_SERVER_URL}/direct-messages`}
+          />
+        </>
+      )}
+      {searchParams.video && (
+        <MediaRoom chatId={conversation.id} video={true} audio={true} />
+      )}
     </div>
   );
 }
