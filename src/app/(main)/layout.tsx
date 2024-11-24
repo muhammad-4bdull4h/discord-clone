@@ -1,5 +1,5 @@
 import NavigationSideBar from "@/components/NavigationSideBar";
-import "@/app/globals.css";
+// import "@/app/globals.css";
 
 export default function MainLayout({
   children,
@@ -7,11 +7,11 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="h-full sidebar">
-      <div className="hidden md:flex h-full w-[72px] flex-col fixed inset-y-0">
+    <div className="h-full">
+      <div className="hidden sidebar md:flex h-full w-[72px] flex-col fixed inset-y-0">
         <NavigationSideBar />
       </div>
-      <main className="md:pl-[72px] h-full">{children}</main>
+      <div className="md:pl-[72px] h-full main">{children}</div>
     </div>
   );
 }

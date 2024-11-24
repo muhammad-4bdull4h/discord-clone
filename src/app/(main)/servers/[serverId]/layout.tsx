@@ -4,7 +4,7 @@ import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import React from "react";
-import "@/app/globals.css";
+// import "@/app/globals.css";
 
 export default async function ServerIdLayout({
   children,
