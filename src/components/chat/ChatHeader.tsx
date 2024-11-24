@@ -25,7 +25,7 @@ function ChatHeader({ serverId, name, type, imageUrl }: ChatHeaderProps) {
       <p className="font-semibold text-md text-black dark:text-white">{name}</p>
       <div className="ml-auto flex items-center">
         {type === "conversations" && <ChatVideoButton />}
-        {process.env.NODE_ENV !== "production" ? <SocketIndicator /> : ""}
+        {process.env.ENVIRONMENT !== "production" ? <SocketIndicator /> : ""}
       </div>
     </div>
   );

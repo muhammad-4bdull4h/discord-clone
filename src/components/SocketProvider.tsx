@@ -28,9 +28,9 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     // Create a new socket instance
-    const socketInstance = ClientIO("https://same-aluminum-knight.glitch.me", {
+    const socketInstance = ClientIO(process.env.NEXT_PUBLIC_SOCKET_SERVER_URL, {
       path: "/socket.io", // Ensure this matches your server configuration
-      transports: ['websocket', 'polling'], // Fallback options
+      transports: ["websocket", "polling"], // Fallback options
     });
 
     // Connection event
