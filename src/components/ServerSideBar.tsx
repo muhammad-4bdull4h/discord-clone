@@ -14,6 +14,7 @@ import ServerMember from "./ServerMember";
 
 interface ServerSideBarProps {
   serverId: string;
+  mobile?: boolean;
 }
 
 const iconMap = {
@@ -29,7 +30,7 @@ const roleIconMap = {
   [MemberRole.ADMIN]: <ShieldAlert className="mr-2 text-rose-500 h-4 w-4" />,
 };
 
-export default async function ServerSideBar({ serverId }: ServerSideBarProps) {
+export default async function ServerSideBar({ serverId , mobile }: ServerSideBarProps) {
   const profile = await currentProfile();
 
   if (!profile) {
@@ -81,7 +82,7 @@ export default async function ServerSideBar({ serverId }: ServerSideBarProps) {
 
   return (
     <div className="flex flex-col h-full text-primary w-full dark:bg-[#2B2D31] bg-[#F2F3F5]">
-      <ServerHeader server={server} role={role as MemberRole} />
+      <ServerHeader mobile={mobile} server={server} role={role as MemberRole} />
       <ScrollArea className="flex-1 px-3">
         <div className="mt-2">
           <ServerSearch

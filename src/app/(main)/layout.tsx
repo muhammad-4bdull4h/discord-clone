@@ -8,7 +8,7 @@ export default function MainLayout({
 }) {
   return (
     <div className="h-full">
-      <div className="hidden sidebar md:flex h-full w-[72px] flex-col fixed inset-y-0">
+      <div className="max-sm:hidden z-[999] navigation-sidebar sm:hidden md:flex h-full w-[72px] sm:flex-col fixed inset-y-0">
         <NavigationSideBar />
       </div>
       <div className="md:pl-[72px] h-full main">{children}</div>

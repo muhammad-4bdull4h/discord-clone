@@ -16,7 +16,7 @@ function MobileToggle({ serverId }: { serverId: string }) {
         <div className="w-[72px]">
           <NavigationSideBar />
         </div>
-        <ServerSideBar serverId={serverId} />
+        <ServerSideBar serverId={serverId} mobile={true} />
       </SheetContent>
     </Sheet>
   );
