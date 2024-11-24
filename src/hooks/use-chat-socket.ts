@@ -1,7 +1,7 @@
+/*eslint-disable @typescript-eslint/no-explicit-any*/
 import { useSocket } from "@/components/SocketProvider";
 import { Member, Message, Profile } from "@prisma/client";
 import { useQueryClient } from "@tanstack/react-query";
-import { X } from "lucide-react";
 import { useEffect } from "react";
 
 type ChatSocketProps = {

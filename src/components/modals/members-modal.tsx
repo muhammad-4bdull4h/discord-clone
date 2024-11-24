@@ -51,8 +51,6 @@ function MembersServerModal() {
   const isModelOpen = isOpen && type === "members";
   const { server } = data as { server: ServerWithMembersWithProfile };
 
-  const [loading, setLoading] = useState(false);
-
   const onKick = async (memberId: string) => {
     setloadingId(memberId);
     try {

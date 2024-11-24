@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import { Open_Sans } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
@@ -8,17 +7,6 @@ import { cn } from "@/lib/utils";
 import ModelProvider from "@/components/ModelProvider";
 import { SocketProvider } from "@/components/SocketProvider";
 import { QueryProvider } from "@/components/QueryProvider";
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
 
 const openSans = Open_Sans({
   subsets: ["latin"],

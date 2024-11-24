@@ -1,6 +1,5 @@
 import { currentProfile } from "@/lib/current-profile";
 import { db } from "@/lib/db";
-import { Rewind } from "lucide-react";
 import { NextResponse } from "next/server";
 
 export async function PATCH(

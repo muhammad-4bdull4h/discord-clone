@@ -33,7 +33,6 @@ import {
   SelectValue,
   SelectItem,
 } from "../ui/select";
-import { channel } from "diagnostics_channel";
 
 const formSchema = z.object({
   name: z

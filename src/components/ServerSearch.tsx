@@ -41,7 +41,7 @@ function ServerSearch({ data }: ServerSearchProps) {
     document.addEventListener("keydown", down);
 
     return () => document.removeEventListener("keydown", down);
-  }, []);
+  }, [open]);
 
   const onClick = ({
     id,

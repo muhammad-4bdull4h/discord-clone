@@ -15,8 +15,8 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 
 function LeaveServerModal() {
-  const { type, isOpen, onClose, onOpen, data } = useModel();
-  const origin = useOrigin();
+  const { type, isOpen, onClose,  data } = useModel();
+   useOrigin();
 
   const isModelOpen = isOpen && type === "leaveServer";
   const { server } = data;
@@ -27,7 +27,7 @@ function LeaveServerModal() {
   const onClick = async () => {
     try {
       setLoading(true);
-      const res = await axios.patch(`/api/servers/${server?.id}/leave`);
+       await axios.patch(`/api/servers/${server?.id}/leave`);
 
       onClose();
       router.refresh();

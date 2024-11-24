@@ -1,5 +1,5 @@
+/*eslint-disable @typescript-eslint/no-explicit-any*/
 import { Channel, ChannelType, Server } from "@prisma/client";
-import { set } from "react-hook-form";
 import { create } from "zustand";
 
 export type ModelType =

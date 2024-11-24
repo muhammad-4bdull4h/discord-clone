@@ -1,9 +1,11 @@
+/*eslint-disable @typescript-eslint/no-explicit-any*/
 "use client"; // Ensure this is used in a Next.js client component
 
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { io as ClientIO } from "socket.io-client";
 
 type SocketContextType = {
+  //eslint-disable @typescript-eslint/no-explicit-any
   socket: any | null;
   isConnected: boolean;
 };
@@ -20,12 +22,13 @@ export const useSocket = () => {
 
 // Socket Provider Component
 export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
+  //eslint-disable @typescript-eslint/no-explicit-any
   const [socket, setSocket] = useState<any | null>(null);
   const [isConnected, setIsConnected] = useState(false);
 
   useEffect(() => {
     // Create a new socket instance
-    const socketInstance = ClientIO("http://localhost:4000", {
+    const socketInstance = ClientIO("https://same-aluminum-knight.glitch.me", {
       path: "/socket.io", // Ensure this matches your server configuration
       transports: ['websocket', 'polling'], // Fallback options
     });

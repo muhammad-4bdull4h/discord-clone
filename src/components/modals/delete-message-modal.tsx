@@ -31,7 +31,7 @@ function DeleteMessageModal() {
           action: "delete",
         },
       });
-      const res = await axios.patch(
+       await axios.patch(
         url,
         {},
         {

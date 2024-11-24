@@ -1,4 +1,3 @@
-import { Conversation } from "@prisma/client";
 import { Hash } from "lucide-react";
 import React from "react";
 

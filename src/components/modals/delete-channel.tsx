@@ -15,7 +15,7 @@ import { useRouter } from "next/navigation";
 import qs from "query-string";
 
 function DeleteChannelModal() {
-  const { type, isOpen, onClose, onOpen, data } = useModel();
+  const { type, isOpen, onClose, data } = useModel();
 
   const isModelOpen = isOpen && type === "deleteChannel";
   const { server, channel } = data;
@@ -32,7 +32,7 @@ function DeleteChannelModal() {
           serverId: server?.id,
         },
       });
-      const res = await axios.delete(url);
+       await axios.delete(url);
 
       onClose();
       router.refresh();

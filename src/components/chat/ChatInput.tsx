@@ -14,7 +14,7 @@ import EmojiPicker from "../EmojiPicker";
 
 interface ChatInputProps {
   apiUrl: string;
-  query: Record<string, any>;
+  query: Record<string, string | number>;
   name: string;
   type: "conversation" | "channel";
 }
@@ -42,7 +42,7 @@ function ChatInput({ apiUrl, query, name, type }: ChatInputProps) {
       });
       const token = await getToken();
 
-      const res = await axios.post(url, val, {
+      await axios.post(url, val, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
