@@ -12,6 +12,7 @@ import { useModel } from "@/hooks/use-model-store";
 import { Button } from "../ui/button";
 import axios from "axios";
 import qs from "query-string";
+import { useAuth } from "@clerk/nextjs";
 
 function DeleteMessageModal() {
   const { type, isOpen, onClose, data } = useModel();
@@ -20,6 +21,7 @@ function DeleteMessageModal() {
   const { apiUrl, query } = data;
 
   const [loading, setLoading] = useState(false);
+  const { getToken } = useAuth();
 
   const onClick = async () => {
     try {
@@ -31,11 +33,14 @@ function DeleteMessageModal() {
           action: "delete",
         },
       });
-       await axios.patch(
+      const token = await getToken();
+      await axios.patch(
         url,
         {},
         {
-          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
 

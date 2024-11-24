@@ -17,6 +17,7 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { useModel } from "@/hooks/use-model-store";
 import { useParams, useRouter } from "next/navigation";
+import { useAuth } from "@clerk/nextjs";
 
 interface ChatItemProps {
   id: string;
@@ -57,6 +58,7 @@ function ChatItem({
 }: ChatItemProps) {
   const [fileType, setFileType] = useState<string | null>(null);
   const [isEditing, setisEditing] = useState(false);
+  const { getToken } = useAuth();
   const { onOpen } = useModel();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -76,7 +78,7 @@ function ChatItem({
   };
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-
+      const token = await getToken();
       const url = qs.stringifyUrl({
         url: `${socketUrl}/${id}`,
         query: {
@@ -86,7 +88,9 @@ function ChatItem({
       });
 
       await axios.patch(url, values, {
-        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       form.reset();
       setisEditing(false);
