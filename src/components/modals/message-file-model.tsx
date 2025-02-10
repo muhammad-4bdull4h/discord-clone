@@ -19,6 +19,7 @@ import qs from "query-string";
 import { useRouter } from "next/navigation";
 import "@/app/globals.css";
 import { useModel } from "@/hooks/use-model-store";
+import { useAuth } from "@clerk/nextjs";
 
 const formSchema = z.object({
   fileUrl: z.string().min(1, { message: "Attachment is requiured" }),
@@ -28,6 +29,7 @@ function MessageFileModal() {
   const { isOpen, onClose, type, data } = useModel();
   const { apiUrl, query } = data;
   const isModelOpen = isOpen && type === "messageFile";
+  const { getToken } = useAuth();
   const router = useRouter();
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -48,6 +50,7 @@ function MessageFileModal() {
         url: apiUrl || "",
         query,
       });
+      const token = await getToken();
       await axios.post(
         url,
         {
@@ -55,7 +58,9 @@ function MessageFileModal() {
           content: val.fileUrl,
         },
         {
-          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
       form.reset();
