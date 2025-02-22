@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# <FULL-STACK-DISCORD-CLONE>
 
-## Getting Started
+![Next.js](https://img.shields.io/badge/Next.js-black?style=for-the-badge&logo=next.js&logoColor=white)  
+![Socket.IO](https://img.shields.io/badge/Socket.IO-black?style=for-the-badge&logo=socket.io&logoColor=white)  
+![TypeScript](https://img.shields.io/badge/TypeScript-black?style=for-the-badge&logo=typescript&logoColor=white)
 
-First, run the development server:
+# Follow Me
+[![Instagram](https://img.shields.io/badge/Instagram-follow%20me-blue?logo=instagram&logoColor=white)](https://www.instagram.com/i._.4bdull4h?igsh=OHpxeHZ1dHQxOTls)
+[![Twitter](https://img.shields.io/badge/Twitter-follow%20me-blue?logo=twitter&logoColor=white)](https://x.com/M_Abdullah419?t=pPA8rSfnOagO2rf6i6RZyg&s=09)
+[![Facebook](https://img.shields.io/badge/Facebook-follow%20me-blue?logo=facebook&logoColor=white)](https://www.facebook.com/abdullah.rafique.5891?mibextid=ZbWKwL)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+# Discord clone
+## Description
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This is a full stack next js discord clone with all functionalities and real time messaging , voice and video chat enabled.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Table of Contents
 
-## Learn More
+- [Features](#Features)
+- [Tech-Stack](#Tech-Stack)
+- [Usage](#Usage)
+- [License](#License)
 
-To learn more about Next.js, take a look at the following resources:
+## Features
+ 
+- SignUp login authentication authorization  
+- Creating servers with name and profile picture  
+- Creating channels just like real discord  
+- real time messaging and voice and video calls.  
+- file and picture uploading in chats.   
+- Assigning roles like gust , admin or moderator     
+- deletion of messages by moderator  
+- one-on-one chat     
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tech-Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+NextJs - A Full stack JavaScript Framework .  
+Prisma - Orm for database.     
+Mysql - For Database.      
+Socketio - For web sockets and realtime messaging.  
+UploadThing - for File upload.  
+Clerk - For authentication and authorization.  
+LiveKit - For voice and video chats.  
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Usage
+-create account  
+-login  
+-create Server or join Server  
+-Start chatting  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Contact
+
+If you would like to discuss a project, collaborate, or have any questions about this project, feel free to reach out to me!
+
+You can contact me through the following channels:  
+[![WhatsApp](https://img.shields.io/badge/WhatsApp-contact%20me-green?logo=whatsapp&logoColor=white)](https://wa.link/23a6xv)  
+[![Instagram](https://img.shields.io/badge/Instagram-contact%20me-blue?logo=instagram&logoColor=white)](https://www.instagram.com/i._.4bdull4h?igsh=OHpxeHZ1dHQxOTls)  
+
+
+
+## License
+
+This project is licensed under the MIT License.
