@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { UploadDropzone } from "@/lib/uploadthing";
 import React, { useEffect, useState } from "react";
 import "@uploadthing/react/styles.css";
@@ -56,7 +56,8 @@ function FileUpload({
           rel="noopener noreferrer"
           className="ml-2 text-sm text-indigo-500 dark:text-indigo-400 hover:underline"
         >
-          {value}
+          {value.slice(0, Math.floor(value.length / 2))}...
+          {/* {value} */}
         </a>
         <button
           onClick={() => onChange("")}
