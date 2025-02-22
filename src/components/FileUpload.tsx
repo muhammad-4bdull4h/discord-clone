@@ -1,8 +1,10 @@
+"use client"
 import { UploadDropzone } from "@/lib/uploadthing";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "@uploadthing/react/styles.css";
 import { FileIcon, X } from "lucide-react";
 import Image from "next/image";
+import { getFileTypeFromHeaders } from "@/lib/getFileTypeFromHeaders";
 
 function FileUpload({
   endpoint,
@@ -13,7 +15,16 @@ function FileUpload({
   value: string;
   endpoint: "serverImage" | "messageFile";
 }) {
-  const fileType = value?.split(".").pop();
+  const [fileType, setfileType] = useState("");
+  useEffect(() => {
+    console.log("File URL: ", value);
+    (async () => {
+      const fileType = await getFileTypeFromHeaders(value);
+      console.log(fileType);
+
+      setfileType(fileType!);
+    })();
+  }, [value]);
 
   if (value && fileType !== "pdf") {
     return (
@@ -35,6 +46,7 @@ function FileUpload({
   }
 
   if (value && fileType === "pdf") {
+    console.log(fileType);
     return (
       <div className="relative flex items-center p-2 m-2 rounded-md bg-background/10   ">
         <FileIcon className="h-10 w-10 fill-indigo-200 stroke-indigo-400" />
